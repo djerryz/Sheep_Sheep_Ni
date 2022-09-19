@@ -136,5 +136,4 @@ b = "", _ = 0; _ < v.length; _++) b += String.fromCharCode(v[_]);
 MatchPlayInfo: S.default.base64_encode(b)
 ```
 
-
-
+动态调试，在步骤11打断点，观察10生成的p应该是有规律的，能确认p即可确认MatchPlayInfo。
