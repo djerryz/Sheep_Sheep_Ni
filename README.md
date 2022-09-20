@@ -2,7 +2,7 @@
 
 🐍 **[查看v1版本](./v1/README.md)** 
 
-🐍 **<a href="https://mp.weixin.qq.com/s/LfjOqtlYTDwoCYF33nTfxw" target="_blank">v2刷榜-视频演示</a> **
+🐍 <a href="https://mp.weixin.qq.com/s/LfjOqtlYTDwoCYF33nTfxw" target="_blank">v2刷榜-视频演示</a>
 
 # 🐏了个🐏 - v2
 
@@ -10,7 +10,7 @@
 
 代码位置在 v2/sheep_crack， 下面是关于分析这款程序的路程， 用时约3小时。
 
-**<a href="https://mp.weixin.qq.com/s/LfjOqtlYTDwoCYF33nTfxw" target="_blank">v2刷榜-视频演示</a> **
+🐍 <a href="https://mp.weixin.qq.com/s/LfjOqtlYTDwoCYF33nTfxw" target="_blank">v2刷榜-视频演示</a>
 
 
 
