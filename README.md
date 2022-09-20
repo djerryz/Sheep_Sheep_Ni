@@ -1,14 +1,18 @@
 <div align="center"><img src="./pic/logo.png"/></div>
 
-🐍 **[查看v1版本](./v1/README.md)** 🐍
+🐍 **[查看v1版本](./v1/README.md)** 
 
-
+🐍 **<a href="https://mp.weixin.qq.com/s/LfjOqtlYTDwoCYF33nTfxw" target="_blank">v2刷榜-视频演示</a> **
 
 # 🐏了个🐏 - v2
 
 ## 一、刷日常挑战 (首发)
 
-想直接看结果的, 代码位置在 v2/sheep_crack， 下面是关于分析这款程序的路程， 用时约3小时。
+代码位置在 v2/sheep_crack， 下面是关于分析这款程序的路程， 用时约3小时。
+
+**<a href="https://mp.weixin.qq.com/s/LfjOqtlYTDwoCYF33nTfxw" target="_blank">v2刷榜-视频演示</a> **
+
+
 
 ### 1. 分析正常业务逻辑
 
@@ -314,7 +318,7 @@ message MatchStepInfo {
 
 
 
-编码与解码算法:
+解码算法:
 
 ```javascript
 // cd sheep_crack/ 
@@ -349,7 +353,7 @@ protobuf.load("yang.proto", function(err, root) {
 
 ### 7. 开刷
 
-由于职业原因，不提供具体的工具，部分逻辑:
+知道MatchPlayInfo的构成，接下来就可以任意构造MatchPlayInfo完成挑战, 部分逻辑:
 
 ```javascript
 var time_array = [
@@ -375,7 +379,7 @@ var buffer = MatchPlayInfo.encode(message).finish();
 Buffer.from(buffer).toString('base64');
 ```
 
-
+配合一个逻辑缺陷，构造一次MatchPlayInfo即可无限刷，不需要重复构造。
 
 
 
