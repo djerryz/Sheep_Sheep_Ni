@@ -16,7 +16,7 @@
 
 * GET /sheep/v1/game/map_info_ex?matchType=3
 
-​		拿到 map_md5 和 map_seed
+  拿到 map_md5 和 map_seed
 
 请求游戏地图:
 
@@ -26,11 +26,11 @@
 
 * POST /sheep/v1/game/game_over_ex?
 
-​		提交 MatchPlayInfo
+  提交 MatchPlayInfo
 
 查询成绩:
 
-* GET /sheep/v1/game/personal_info?
+* GET /sheep/v1/game/personal_info
 
   通过 daily_count ， today_time 等判断今日挑战完成情况
 
@@ -46,7 +46,7 @@
 
 首先，观察重放已成功完成挑战的请求重放是否有效:
 
-1. 完成挑战，抓包，重放，无效
+1. 完成挑战，抓包，重放，无效<br>
 
 
 
@@ -56,7 +56,7 @@
 2. 清除本地缓存 `Documents\WeChat Files\{wxid}\Applet\{游戏id}`
 3. 再次加载游戏， 如果前端有发起`/sheep/v1/game/user_rank_info`请求，则丢弃掉
 4. 再次完成一次挑战， 观察到 daily_count 加 1
-5. 以上证明单日能是可以多次完成挑战的，这为后续的刷做了铺垫
+5. 以上证明单日能是可以多次完成挑战的，这为后续的刷做了铺垫<br>
 
 
 
@@ -64,7 +64,7 @@
 
 * 通过修改 map_md5 为同一关, 挑战完成无效
 * 通过修改 map_map_seed 全为0 , 挑战完成有效
-* 通过修改 blockTypeData 使得图像一致, 挑战完成有效
+* 通过修改 blockTypeData 使得图像一致, 挑战完成有效<br>
 
 
 
@@ -73,7 +73,7 @@
 * 点击游戏，请求map_info_ex
 * 完成游戏，此时抓包，不要打给服务端，再次重放map_info_ex，此时服务端下发了不同的map_seed
 * 将完成游戏的包放通给服务端
-* 观察到游戏依然顺利完成
+* 观察到游戏依然顺利完成<br>
 
 
 
@@ -196,13 +196,13 @@ MatchPlayInfo: S.default.base64_encode(b)
 * 小程序基于浏览器内核，基于该层面的调试技巧(附加命令等)?
 * wxapkg 重打包，引入类似webconsole的调试库? -- 目前发现解密后直接篡改是可以执行，但有守护线程检查篡改
 
-这不是本项目重点，接下来就纯静态的角度，还原出算法。
+这不是本项目重点，接下来就纯静态的角度，还原出算法。<br>
 
 
 
 看到关键操作函数是有 e.uint32(8).int32 和 e.uint32(16).int32 等等，开始以为uint32的不同参映射到不同的具体函数，后面匹配了下，发现protobufjs库原生即有这类函数写法, 如 [这个git项目](https://github.com/dbtcs1/ignite-cli-case-study4/blob/73230d0a99a1093a42c8dd39d8f005abef8544cf/vue/src/store/generated/cosmos/cosmos-sdk/cosmos.authz.v1beta1/module/types/tendermint/abci/types.js)
 
-如果足够细心，你会发现代码中有很多特征, 如 `prototype`, `"./protobuf.min": "protobuf.min"`等，那么，很显然操作 f 变量的就是来自 protobufjs 里面的函数。
+如果足够细心，你会发现代码中有很多特征, 如 `prototype`, `"./protobuf.min": "protobuf.min"`等，那么，很显然操作 f 变量的就是来自 protobufjs 里面的函数。<br>
 
 
 
@@ -272,7 +272,7 @@ console.log(b)
 
 ### 6. 解码MatchPlayInfo
 
-上面是用了一个特殊值的f，但真实的f值实际上要走很大一段代码逻辑，静态看太痛苦了，那么很自然的相当去解码一次成功挑战的MatchPlayInfo，看看完成挑战是如何构造，那么按照其样子去构造，就可以达成目标。
+上面是用了一个特殊值的f，但真实的f值实际上要走很大一段代码逻辑，静态看太痛苦了，那么很自然的想到去解码一次成功挑战的MatchPlayInfo，看看完成挑战是如何构造，那么按照其样子去构造，就可以达成目标。
 
 
 
