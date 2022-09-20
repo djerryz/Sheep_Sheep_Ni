@@ -1,0 +1,29 @@
+// cd sheep_crack/ 
+// vi yang.proto
+package yang;
+syntax = "proto3";
+
+// https://developers.google.com/protocol-buffers/docs/proto3
+// 基于代码:
+// o.MatchPlayInfo = function() {
+// return t.prototype.gameType = 0, t.prototype.mapId = 0, t.prototype.mapSeed = 0, t.prototype.stepInfoList = r.emptyArray, t.create = function(e) {
+// case 1: n.gameType = t.int32();
+// case 2: n.mapId = t.int32();
+// case 3: n.mapSeed = t.int32();
+// case 4: n.stepInfoList.push(c.protocol.MatchStepInfo.decode(t, t.uint32()));
+message MatchPlayInfo {
+	int32 gameType = 1; // game_type或者gameType的写法都可以
+	int32 mapId = 2;
+	int32 mapSeed = 3;
+	repeated MatchStepInfo stepInfoList = 4;
+}
+
+// 基于代码:
+// o.MatchStepInfo = function() {
+// return t.prototype.chessIndex = 0, t.prototype.timeTag = 0, t.create = function(e) {
+// case 1: n.chessIndex = t.int32();
+// case 2: n.timeTag = t.int32();
+message MatchStepInfo {
+	int32 chessIndex = 1;
+	int32 timeTag = 2;
+}
